@@ -1,1 +1,43 @@
-<p>login works!</p>
+<div class="row d-flex flex-column justify-content-center align-items-center my-auto p-2">
+  <div class="col-9 col-md-6 col-xl-4 d-flex align-items-center mb-3">
+    <img class="img-fluid" src="./assets/login.svg" alt="login image" />
+  </div>
+  <div class="col-md-8 col-xl-6 mt-4 mt-xl-1">
+    <div class="text-center mx-4">
+      <h2>Vet System LTD</h2>
+      <hr />
+      <p *ngIf="
+          loginForm.get('username')?.valid &&
+          loginForm.get('password')?.valid &&
+          loginForm.invalid
+        " class="alert alert-danger p-2">
+        Invalid credentials
+      </p>
+      <form novalidate [formGroup]="loginForm" (ngSubmit)="submitForm()">
+        <div class="mb-3">
+          <input type="email" formControlName="username" class="form-control" placeholder="Username" />
+          <span class="help-block text-danger" *ngIf="
+              (loginForm.get('username')?.touched ||
+                loginForm.get('username')?.dirty) &&
+              loginForm.get('username')?.errors
+            ">
+            <small *ngIf="loginForm.get('username')?.getError('required')">Username is required!</small>
+          </span>
+        </div>
+        <div class="mb-3">
+          <input type="password" formControlName="password" class="form-control" placeholder="Password" />
+          <span class="help-block text-danger" *ngIf="
+              (loginForm.get('password')?.touched ||
+                loginForm.get('password')?.dirty) &&
+              loginForm.get('password')?.errors
+            ">
+            <small *ngIf="loginForm.get('password')?.getError('required')">Password is required!</small>
+          </span>
+        </div>
+        <button type="submit" class="btn btn-primary" [disabled]="!loginForm.valid">
+          Login
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
