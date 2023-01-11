@@ -2,7 +2,8 @@ import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { User } from '../dto/user.dto';
 import { AuthenticationService } from '../services/authentication.service';
-import { CookieService } from "ngx-cookie-service";
+import { CookieService } from 'ngx-cookie-service';
+import { EncryptionService } from '../services/encryption.service';
 
 @Component({
   selector: 'app-login',
@@ -16,7 +17,8 @@ export class LoginComponent {
   constructor(
     private formBuilder: FormBuilder,
     private authenticationService: AuthenticationService,
-    private cookieService: CookieService
+    private cookieService: CookieService,
+    private encryptionService: EncryptionService
   ) {}
 
   ngOnInit(): void {
@@ -30,15 +32,21 @@ export class LoginComponent {
     this.user = this.loginForm.value;
     this.authenticationService.authenticate(this.user).subscribe({
       next: (res: any) => {
-        if(res.jwtToken) this.cookieService.set('jwt-token', res.jwtToken);
-        console.log(res.role);
+        if (res.jwtToken) this.cookieService.set('jwt-token', res.jwtToken);
+        if (res.role) {
+          const encryptedRole = this.encryptionService.encrypt(res.role);
+          this.cookieService.set('role', encryptedRole);
+        }
       },
       error: (err) => {
         this.loginForm.setErrors({
           incorrect: true,
         });
       },
-      complete: () => console.info('complete'),
+      complete: () => {
+        console.log('Hello');
+        //Redirect the user to the list component.
+      },
     });
   }
 }

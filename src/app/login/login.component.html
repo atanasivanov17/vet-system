@@ -1,8 +1,8 @@
 <div class="row d-flex flex-column justify-content-center align-items-center my-auto p-2">
-  <div class="col-9 col-md-6 col-xl-4 d-flex align-items-center mb-3">
+  <div class="col-9 col-md-5 col-xl-4 d-flex align-items-center mb-3">
     <img class="img-fluid" src="./assets/login.svg" alt="login image" />
   </div>
-  <div class="col-md-8 col-xl-6 mt-4 mt-xl-1">
+  <div class="col-10 col-md-6 col-xl-6 mt-4 mt-xl-1">
     <div class="text-center mx-4">
       <h2>Vet System LTD</h2>
       <hr />
@@ -34,7 +34,7 @@
             <small *ngIf="loginForm.get('password')?.getError('required')">Password is required!</small>
           </span>
         </div>
-        <button type="submit" class="btn btn-primary" [disabled]="!loginForm.valid">
+        <button type="submit" class="btn btn-primary px-3" [disabled]="!loginForm.valid">
           Login
         </button>
       </form>

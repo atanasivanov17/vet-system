@@ -9,13 +9,17 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthenticationService } from './services/authentication.service';
 import { CookieService } from 'ngx-cookie-service';
+import { AppointmentListComponent } from './appointment-list/appointment-list.component';
+import { AddAppointmentComponent } from './add-appointment/add-appointment.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    LoginComponent
+    LoginComponent,
+    AppointmentListComponent,
+    AddAppointmentComponent
   ],
   imports: [
     BrowserModule,
