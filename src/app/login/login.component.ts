@@ -4,6 +4,7 @@ import { User } from '../dto/user.dto';
 import { AuthenticationService } from '../services/authentication.service';
 import { CookieService } from 'ngx-cookie-service';
 import { EncryptionService } from '../services/encryption.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -18,7 +19,8 @@ export class LoginComponent {
     private formBuilder: FormBuilder,
     private authenticationService: AuthenticationService,
     private cookieService: CookieService,
-    private encryptionService: EncryptionService
+    private encryptionService: EncryptionService,
+    private router: Router,
   ) {}
 
   ngOnInit(): void {
@@ -44,8 +46,9 @@ export class LoginComponent {
         });
       },
       complete: () => {
-        console.log('Hello');
-        //Redirect the user to the list component.
+        this.router.navigate(['appointment-list']).then( () =>
+          window.location.reload()
+        );
       },
     });
   }

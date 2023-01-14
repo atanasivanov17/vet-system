@@ -1,1 +1,128 @@
-<p>add-appointment works!</p>
+<div class="container">
+  <h2>Add appointment</h2>
+  <form
+    novalidate
+    [formGroup]="appointmentForm"
+    (ngSubmit)="submitForm()"
+    class="row g-3 my-4"
+  >
+    <div class="col-md-6">
+      <label for="patientName" class="form-label">Patient Name</label>
+      <input
+        type="text"
+        class="form-control"
+        id="patientName"
+        formControlName="patientName"
+      />
+    </div>
+    <div class="col-md-6">
+      <label for="animalType" class="form-label">Animal Type</label>
+      <select id="animalType" class="form-select" formControlName="animalType">
+        <option selected>Dog</option>
+        <option>Cat</option>
+        <option>Rabbit</option>
+        <option>Bird</option>
+        <option>Reptile</option>
+      </select>
+    </div>
+    <div class="col-md-4">
+      <label for="ownerIdCardNumber" class="form-label"
+        >Owner Id Card Number</label
+      >
+      <input
+        type="text"
+        class="form-control"
+        id="ownerIdCardNumber"
+        formControlName="ownerIdCardNumber"
+      />
+    </div>
+    <div class="col-md-8">
+      <label for="ownerName" class="form-label">Owner Name</label>
+      <input
+        type="text"
+        class="form-control"
+        id="ownerName"
+        formControlName="ownerName"
+      />
+    </div>
+    <div class="col-md-8">
+      <label for="ownerSurname" class="form-label">Owner Surname</label>
+      <input
+        type="text"
+        class="form-control"
+        id="ownerSurname"
+        formControlName="ownerSurname"
+      />
+    </div>
+    <div class="col-md-4">
+      <label for="ownerContactNumber" class="form-label"
+        >Owner Contact Number</label
+      >
+      <input
+        type="text"
+        class="form-control"
+        id="ownerContactNumber"
+        formControlName="ownerContactNumber"
+      />
+    </div>
+    <div class="col-md-4">
+      <label for="appointmentDate" class="form-label">Date</label>
+      <input
+        type="date"
+        class="form-control"
+        id="appointmentDate"
+        formControlName="appointmentDate"
+      />
+    </div>
+    <div class="col-md-4">
+      <label for="appointmentTime" class="form-label">Time</label>
+      <input
+        type="time"
+        class="form-control"
+        id="appointmentTime"
+        formControlName="appointmentTime"
+      />
+    </div>
+    <div class="col-md-4">
+      <label for="appointmentDuration" class="form-label">Duration</label>
+      <select
+        id="appointmentDuration"
+        class="form-select"
+        formControlName="appointmentDuration"
+      >
+        <option selected>10</option>
+        <option>15</option>
+        <option>30</option>
+      </select>
+    </div>
+    <div class="form-floating col-md-4">
+      <textarea
+        class="form-control"
+        placeholder="Leave a reason here"
+        id="reasonForAppointment"
+        style="height: 100px"
+        formControlName="reasonForAppointment"
+      ></textarea>
+      <label for="reasonForAppointment">Reason</label>
+    </div>
+    <div class="form-floating col-md-8">
+      <textarea
+        class="form-control"
+        placeholder="Leave a notes here"
+        id="vetNotes"
+        style="height: 100px"
+        formControlName="vetNotes"
+      ></textarea>
+      <label for="vetNotes">Vet Notes</label>
+    </div>
+    <div class="col-12">
+      <button
+        type="submit"
+        class="btn btn-primary px-4"
+        [disabled]="!appointmentForm.valid"
+      >
+        Add
+      </button>
+    </div>
+  </form>
+</div>
