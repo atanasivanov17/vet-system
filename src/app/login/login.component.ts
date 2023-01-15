@@ -46,7 +46,7 @@ export class LoginComponent {
         });
       },
       complete: () => {
-        this.router.navigate(['appointment-list']).then( () =>
+        this.router.navigate(['/']).then( () =>
           window.location.reload()
         );
       },

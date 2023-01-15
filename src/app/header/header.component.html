@@ -15,10 +15,10 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav me-auto">
         <li *ngIf="role == 'ADMIN' || role == 'RECEPTIONIST'" class="nav-item">
-          <a class="nav-link" routerLink="/add-appointment" routerLinkActive="active">Add Appointment</a>
+          <a class="nav-link" routerLink="/add" routerLinkActive="active">Add Appointment</a>
         </li>
         <li *ngIf="role != ''" class="nav-item">
-          <a class="nav-link" routerLink="/appointment-list" routerLinkActive="active">List Appointments</a>
+          <a class="nav-link" routerLink="/appointments" routerLinkActive="active">List Appointments</a>
         </li>
       </ul>
       <ul class="navbar-nav">

@@ -23,8 +23,8 @@
                 <td>{{appointment.ownerSurname}}</td>
                 <td>{{appointment.appointmentDate}} {{appointment.appointmentTime}}</td>
                 <td>{{appointment.appointmentDuration}}</td>
-                <td><a class="btn btn-primary" routerLink="/add-appointment">View</a></td>
-                <td><a class="btn btn-warning" routerLink="/add-appointment">Update</a></td>
+                <td><a class="btn btn-primary" [routerLink]="['/appointments', appointment.appointmentId]">View</a></td>
+                <td><a class="btn btn-warning" [routerLink]="['/update', appointment.appointmentId]">Update</a></td>
                 <td *ngIf="role == 'ADMIN'"><a class="btn btn-danger" (click)="deleteAppointment(appointment.appointmentId)">Delete</a></td>
             </tr>
         </tbody>

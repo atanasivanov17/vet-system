@@ -106,4 +106,9 @@ export class Appointment {
     this._appointmentDate = value;
   }
 
+  
+  public set appointmentTime(value : string) {
+    this._appointmentTime = value;
+  }
+  
 }

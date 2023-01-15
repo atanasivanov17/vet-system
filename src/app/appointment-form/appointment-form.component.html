@@ -1,0 +1,254 @@
+<div class="container">
+  <h2>{{path == 'update' ? 'Update' : 'Add'}} appointment</h2>
+  <form
+    novalidate
+    [formGroup]="appointmentForm"
+    (ngSubmit)="submitForm()"
+    class="row g-3 my-4"
+  >
+    <div class="col-md-6">
+      <label for="patientName" class="form-label">Patient Name</label>
+      <input
+        type="text"
+        class="form-control"
+        id="patientName"
+        formControlName="patientName"
+      />
+      <span
+        class="help-block text-danger"
+        *ngIf="
+          (appointmentForm.get('patientName')?.touched ||
+            appointmentForm.get('patientName')?.dirty) &&
+          appointmentForm.get('patientName')?.errors
+        "
+      >
+        <small *ngIf="appointmentForm.get('patientName')?.getError('required')"
+          >Patient name is required!</small
+        >
+      </span>
+    </div>
+    <div class="col-md-6">
+      <label for="animalType" class="form-label">Animal Type</label>
+      <select id="animalType" class="form-select" formControlName="animalType">
+        <option selected>Dog</option>
+        <option>Cat</option>
+        <option>Rabbit</option>
+        <option>Bird</option>
+        <option>Reptile</option>
+      </select>
+      <span
+        class="help-block text-danger"
+        *ngIf="
+          (appointmentForm.get('animalType')?.touched ||
+            appointmentForm.get('animalType')?.dirty) &&
+          appointmentForm.get('animalType')?.errors
+        "
+      >
+        <small *ngIf="appointmentForm.get('animalType')?.getError('required')"
+          >Animal type is required!</small
+        >
+      </span>
+    </div>
+    <div class="col-md-4">
+      <label for="ownerIdCardNumber" class="form-label"
+        >Owner Id Card Number</label
+      >
+      <input
+        type="text"
+        class="form-control"
+        id="ownerIdCardNumber"
+        formControlName="ownerIdCardNumber"
+      />
+      <span
+        class="help-block text-danger"
+        *ngIf="
+          (appointmentForm.get('ownerIdCardNumber')?.touched ||
+            appointmentForm.get('ownerIdCardNumber')?.dirty) &&
+          appointmentForm.get('ownerIdCardNumber')?.errors
+        "
+      >
+        <small *ngIf="appointmentForm.get('ownerIdCardNumber')?.getError('required')"
+          >ID card number is required!<br></small
+        >
+        <small *ngIf="appointmentForm.get('ownerIdCardNumber')?.getError('pattern')"
+          >ID card number must consist of numbers with a letter at the end!</small
+        >
+      </span>
+    </div>
+    <div class="col-md-8">
+      <label for="ownerName" class="form-label">Owner Name</label>
+      <input
+        type="text"
+        class="form-control"
+        id="ownerName"
+        formControlName="ownerName"
+      />
+      <span
+        class="help-block text-danger"
+        *ngIf="
+          (appointmentForm.get('ownerName')?.touched ||
+            appointmentForm.get('ownerName')?.dirty) &&
+          appointmentForm.get('ownerName')?.errors
+        "
+      >
+        <small *ngIf="appointmentForm.get('ownerName')?.getError('required')"
+          >Owner name is required!</small
+        >
+      </span>
+    </div>
+    <div class="col-md-8">
+      <label for="ownerSurname" class="form-label">Owner Surname</label>
+      <input
+        type="text"
+        class="form-control"
+        id="ownerSurname"
+        formControlName="ownerSurname"
+      />
+      <span
+        class="help-block text-danger"
+        *ngIf="
+          (appointmentForm.get('ownerSurname')?.touched ||
+            appointmentForm.get('ownerSurname')?.dirty) &&
+          appointmentForm.get('ownerSurname')?.errors
+        "
+      >
+        <small *ngIf="appointmentForm.get('ownerSurname')?.getError('required')"
+          >Owner surname is required!</small
+        >
+      </span>
+    </div>
+    <div class="col-md-4">
+      <label for="ownerContactNumber" class="form-label"
+        >Owner Contact Number</label
+      >
+      <input
+        type="text"
+        class="form-control"
+        id="ownerContactNumber"
+        formControlName="ownerContactNumber"
+      />
+      <span
+        class="help-block text-danger"
+        *ngIf="
+          (appointmentForm.get('ownerContactNumber')?.touched ||
+            appointmentForm.get('ownerContactNumber')?.dirty) &&
+          appointmentForm.get('ownerContactNumber')?.errors
+        "
+      >
+        <small *ngIf="appointmentForm.get('ownerContactNumber')?.getError('required')"
+          >Contact number is required!<br></small
+        >
+        <small *ngIf="appointmentForm.get('ownerContactNumber')?.getError('min')"
+          >Contact number cannot contain negative numbers!<br></small
+        >
+        <small *ngIf="appointmentForm.get('ownerContactNumber')?.getError('pattern')"
+          >Contact number must consist of numbers only!<br></small
+        >
+        <small *ngIf="appointmentForm.get('ownerContactNumber')?.getError('minlength')"
+          >Contact number must be at least 8 characters long!<br></small
+        >
+      </span>
+    </div>
+    <div class="col-md-6">
+      <label for="appointmentDateTime" class="form-label">Date & Time</label>
+      <input
+        type="datetime-local"
+        class="form-control"
+        id="appointmentDateTime"
+        formControlName="appointmentDateTime"
+      />
+      <span
+        class="help-block text-danger"
+        *ngIf="
+          (appointmentForm.get('appointmentDateTime')?.touched ||
+            appointmentForm.get('appointmentDateTime')?.dirty) &&
+          appointmentForm.get('appointmentDateTime')?.errors
+        "
+      >
+        <small *ngIf="appointmentForm.get('appointmentDateTime')?.getError('required')"
+          >Appointment date and time is required!<br></small
+        >
+        <small *ngIf="appointmentForm.get('appointmentDateTime')?.getError('appointmentDateTimeInvalid')"
+          >Appointment date and time cannot be in the past!</small
+        >
+      </span>
+    </div>
+    <div class="col-md-6">
+      <label for="appointmentDuration" class="form-label">Duration</label>
+      <select
+        id="appointmentDuration"
+        class="form-select"
+        formControlName="appointmentDuration"
+      >
+        <option selected>10</option>
+        <option>15</option>
+        <option>30</option>
+      </select>
+      <span
+        class="help-block text-danger"
+        *ngIf="
+          (appointmentForm.get('appointmentDuration')?.touched ||
+            appointmentForm.get('appointmentDuration')?.dirty) &&
+          appointmentForm.get('appointmentDuration')?.errors
+        "
+      >
+        <small *ngIf="appointmentForm.get('appointmentDuration')?.getError('required')"
+          >Appointment duration is required!</small
+        >
+      </span>
+    </div>
+    <div class="form-floating col-md-4">
+      <textarea
+        class="form-control"
+        placeholder="Leave a reason here"
+        id="reasonForAppointment"
+        style="height: 100px"
+        formControlName="reasonForAppointment"
+      ></textarea>
+      <span
+        class="help-block text-danger"
+        *ngIf="
+          (appointmentForm.get('reasonForAppointment')?.touched ||
+            appointmentForm.get('reasonForAppointment')?.dirty) &&
+          appointmentForm.get('reasonForAppointment')?.errors
+        "
+      >
+        <small *ngIf="appointmentForm.get('reasonForAppointment')?.getError('required')"
+          >Reason for appointment is required!</small
+        >
+      </span>
+      <label for="reasonForAppointment">Reason</label>
+    </div>
+    <div *ngIf="role != 'RECEPTIONIST'" class="form-floating col-md-8">
+      <textarea
+        class="form-control"
+        placeholder="Leave a notes here"
+        id="vetNotes"
+        style="height: 100px"
+        formControlName="vetNotes"
+      ></textarea>
+      <span
+        class="help-block text-danger"
+        *ngIf="
+          (appointmentForm.get('vetNotes')?.touched ||
+            appointmentForm.get('vetNotes')?.dirty) &&
+          appointmentForm.get('vetNotes')?.errors
+        "
+      >
+        <small *ngIf="appointmentForm.get('vetNotes')?.getError('required')"
+          >Vet notes are required!</small
+        >
+      </span>
+      <label for="vetNotes">Vet Notes</label>
+    </div>
+    <div class="col-12">
+      <button
+        type="submit"
+        class="btn btn-primary px-4"
+        [disabled]="!appointmentForm.valid"
+      >
+      {{path == 'update' ? 'Update' : 'Add'}}
+      </button>
+    </div>
+  </form>
+</div>

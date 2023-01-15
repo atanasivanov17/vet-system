@@ -1,3 +1,4 @@
+import { AppointmentFormComponent } from './appointment-form/appointment-form.component';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
@@ -10,7 +11,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AuthenticationService } from './services/authentication.service';
 import { CookieService } from 'ngx-cookie-service';
 import { AppointmentListComponent } from './appointment-list/appointment-list.component';
-import { AddAppointmentComponent } from './add-appointment/add-appointment.component';
+import { AppointmentDetailsComponent } from './appointment-details/appointment-details.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { AddAppointmentComponent } from './add-appointment/add-appointment.compo
     FooterComponent,
     LoginComponent,
     AppointmentListComponent,
-    AddAppointmentComponent
+    AppointmentFormComponent,
+    AppointmentDetailsComponent
   ],
   imports: [
     BrowserModule,

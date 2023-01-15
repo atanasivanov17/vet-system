@@ -1,20 +1,32 @@
+import { AppointmentDetailsComponent } from './appointment-details/appointment-details.component';
 import { AppointmentListComponent } from './appointment-list/appointment-list.component';
 import { LoginComponent } from './login/login.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AddAppointmentComponent } from './add-appointment/add-appointment.component';
+import { AppointmentFormComponent } from './appointment-form/appointment-form.component';
 import { AppointmentGuard } from './services/appointment.guard';
 
 const routes: Routes = [
-  { path: '', component: LoginComponent },
+  { path: 'login', component: LoginComponent },
   {
-    path: 'appointment-list',
+    path: 'appointments',
     component: AppointmentListComponent,
     canActivate: [AppointmentGuard],
   },
+  { path: '', redirectTo: '/appointments', pathMatch: 'full' },
   {
-    path: 'add-appointment',
-    component: AddAppointmentComponent,
+    path: 'add',
+    component: AppointmentFormComponent,
+    canActivate: [AppointmentGuard],
+  },
+  {
+    path: 'update/:id',
+    component: AppointmentFormComponent,
+    canActivate: [AppointmentGuard],
+  },
+  {
+    path: 'appointments/:id',
+    component: AppointmentDetailsComponent,
     canActivate: [AppointmentGuard],
   },
 ];

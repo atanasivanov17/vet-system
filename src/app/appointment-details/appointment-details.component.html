@@ -1,0 +1,96 @@
+<div class="container">
+  <h2 class="mb-4">Appointment Details</h2>
+  <div class="card mb-3">
+    <div class="card-body">
+      <div class="row">
+        <div class="col-sm-3">
+          <h6 class="mb-0">Patient Name</h6>
+        </div>
+        <div class="col-sm-9 text-secondary">
+          {{ appointment?.patientName }}
+        </div>
+      </div>
+      <hr />
+      <div class="row">
+        <div class="col-sm-3">
+          <h6 class="mb-0">Animal Type</h6>
+        </div>
+        <div class="col-sm-9 text-secondary">
+          {{ appointment?.animalType }}
+        </div>
+      </div>
+      <hr />
+      <div class="row">
+        <div class="col-sm-3">
+          <h6 class="mb-0">ID card number</h6>
+        </div>
+        <div class="col-sm-9 text-secondary">
+          {{ appointment?.ownerIdCardNumber }}
+        </div>
+      </div>
+      <hr />
+      <div class="row">
+        <div class="col-sm-3">
+          <h6 class="mb-0">Owner Name</h6>
+        </div>
+        <div class="col-sm-9 text-secondary">
+            {{appointment?.ownerName}}
+        </div>
+      </div>
+      <hr />
+      <div class="row">
+        <div class="col-sm-3">
+          <h6 class="mb-0">Owner Surname</h6>
+        </div>
+        <div class="col-sm-9 text-secondary">
+            {{appointment?.ownerSurname}}
+        </div>
+      </div>
+      <hr />
+      <div class="row">
+        <div class="col-sm-3">
+          <h6 class="mb-0">Owner Contact Number</h6>
+        </div>
+        <div class="col-sm-9 text-secondary">
+            {{appointment?.ownerContactNumber}}
+        </div>
+      </div>
+      <hr />
+      <div class="row">
+        <div class="col-sm-3">
+          <h6 class="mb-0">Appointment Date & Time</h6>
+        </div>
+        <div class="col-sm-9 text-secondary">
+            {{appointment?.appointmentDate}} {{appointment?.appointmentTime}}
+        </div>
+      </div>
+      <hr />
+      <div class="row">
+        <div class="col-sm-3">
+          <h6 class="mb-0">Appointment Duration</h6>
+        </div>
+        <div class="col-sm-9 text-secondary">
+            {{appointment?.appointmentDuration}} min
+        </div>
+      </div>
+      <hr />
+      <div class="row">
+        <div class="col-sm-3">
+          <h6 class="mb-0">Reason for appointment</h6>
+        </div>
+        <div class="col-sm-9 text-secondary">
+            {{appointment?.reasonForAppointment}}
+        </div>
+      </div>
+      <hr *ngIf="appointment?.vetNotes"/>
+      <div class="row" *ngIf="appointment?.vetNotes">
+        <div class="col-sm-3">
+          <h6 class="mb-0">Vet Notes</h6>
+        </div>
+        <div class="col-sm-9 text-secondary">
+            {{appointment?.vetNotes}}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

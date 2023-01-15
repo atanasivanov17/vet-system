@@ -32,7 +32,7 @@ export class AppointmentGuard implements CanActivate {
     | UrlTree {
 
       if(!this.cookieService.check('role') || !this.cookieService.check('jwt-token')) {
-        this.router.navigate(['/']).then( () => {
+        this.router.navigate(['login']).then( () => {
           window.location.reload();
         });
         return false;
@@ -40,7 +40,8 @@ export class AppointmentGuard implements CanActivate {
         this.role = this.encryptionService.decrypt(this.cookieService.get('role'));
       }
 
-      if(state.url == '/add-appointment' && this.role == 'VET'){
+      if(state.url == '/add' && this.role == 'VET'){
+        this.router.navigate(['appointments'])
         return false;
       }
       
