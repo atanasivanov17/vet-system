@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class AppointmentService {
-  endpoint: string = 'http://localhost:8080/appointment';
+  endpoint: string = 'https://css.teknologija.com/appointment';
   jwtToken: string = this.cookieService.get('jwt-token');
 
   httpHeader = {

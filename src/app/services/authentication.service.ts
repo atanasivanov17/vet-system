@@ -8,7 +8,7 @@ import { Observable } from "rxjs";
 })
 
 export class AuthenticationService {
-  endpoint: string = 'http://localhost:8080/authenticate';
+  endpoint: string = 'https://css.teknologija.com/authenticate';
 
   httpHeader = {
     headers: new HttpHeaders({

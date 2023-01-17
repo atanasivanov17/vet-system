@@ -1,33 +1,59 @@
-<div class="table-responsive container mt-3" *ngIf="appointments != null && appointments.length > 0">
+<div class="container">
+  <button class="btn btn-success" [disabled]="appointments.length == 0" (click)="exportExcel()">Export Excel</button>
+  <button class="btn btn-danger ms-3" [disabled]="appointments.length == 0" (click)="exportPdf()">Export PDF</button>
+  <div
+    class="table-responsive mt-3"
+    *ngIf="appointments != null && appointments.length > 0"
+  >
     <table class="table table-striped">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Patient Name</th>
-                <th>Animal Type</th>
-                <th>Owner Name</th>
-                <th>Owner Surname</th>
-                <th>Date and Time</th>
-                <th>Duration</th>
-                <th></th>
-                <th></th>
-                <th *ngIf="role == 'ADMIN'"></th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let appointment of appointments">
-                <td>{{appointment.appointmentId}}</td>
-                <td>{{appointment.patientName}}</td>
-                <td>{{appointment.animalType}}</td>
-                <td>{{appointment.ownerName}}</td>
-                <td>{{appointment.ownerSurname}}</td>
-                <td>{{appointment.appointmentDate}} {{appointment.appointmentTime}}</td>
-                <td>{{appointment.appointmentDuration}}</td>
-                <td><a class="btn btn-primary" [routerLink]="['/appointments', appointment.appointmentId]">View</a></td>
-                <td><a class="btn btn-warning" [routerLink]="['/update', appointment.appointmentId]">Update</a></td>
-                <td *ngIf="role == 'ADMIN'"><a class="btn btn-danger" (click)="deleteAppointment(appointment.appointmentId)">Delete</a></td>
-            </tr>
-        </tbody>
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Patient Name</th>
+          <th>Animal Type</th>
+          <th>Owner Name</th>
+          <th>Owner Surname</th>
+          <th>Date and Time</th>
+          <th>Duration</th>
+          <th></th>
+          <th></th>
+          <th *ngIf="role == 'ADMIN'"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let appointment of appointments">
+          <td>{{ appointment.appointmentId }}</td>
+          <td>{{ appointment.patientName }}</td>
+          <td>{{ appointment.animalType }}</td>
+          <td>{{ appointment.ownerName }}</td>
+          <td>{{ appointment.ownerSurname }}</td>
+          <td>
+            {{ appointment.appointmentDate }} {{ appointment.appointmentTime }}
+          </td>
+          <td>{{ appointment.appointmentDuration }}</td>
+          <td>
+            <a
+              class="btn btn-primary"
+              [routerLink]="['/appointments', appointment.appointmentId]"
+              >View</a
+            >
+          </td>
+          <td>
+            <a
+              class="btn btn-warning"
+              [routerLink]="['/update', appointment.appointmentId]"
+              >Update</a
+            >
+          </td>
+          <td *ngIf="role == 'ADMIN'">
+            <a
+              class="btn btn-danger"
+              (click)="deleteAppointment(appointment.appointmentId)"
+              >Delete</a
+            >
+          </td>
+        </tr>
+      </tbody>
     </table>
+  </div>
 </div>
-
